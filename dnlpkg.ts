@@ -1,5 +1,6 @@
 import {mkdirSync, readFileSync} from "fs";
 
+const origcwd = process.cwd();
 process.chdir(process.env.HOME + "/.cache/zig/p");
 
 async function downloadFromZon(zon: string) {
@@ -36,7 +37,7 @@ async function downloadFromZon(zon: string) {
     if(urlv != null) throw new Error("missed url: " + urlv);
 }
 
-await downloadFromZon(Bun.argv[2]);
+await downloadFromZon(origcwd + "/build.zig.zon");
 
 
 
